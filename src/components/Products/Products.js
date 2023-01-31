@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Col, Container, Row, ButtonGroup, Button } from 'react-bootstrap';
+import { Card, Col, Container, Row, Button } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { toggleBrand, toggleStock } from '../../redux/actionCreators/reducerAction';
 import Product from '../Product/Product';
@@ -42,7 +42,7 @@ const Products = () => {
     }
 
     if (loading) return <p>Loading...............</p>
-    if (error) return <p>Reload Again...............</p>
+    if (error) return <p>Server/Product Not Found. Please Reload Again................</p>
     return (
         <div>
             <Container>

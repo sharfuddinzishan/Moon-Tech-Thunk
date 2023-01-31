@@ -2,12 +2,14 @@ import React, { useEffect } from 'react';
 import Products from '../../../components/Products/Products';
 import { } from 'redux'
 import { useDispatch } from 'react-redux';
-import { FETCHING_ERROR, FETCHING_START, FETCHING_SUCCESS } from '../../../redux/actionTypes/actionTypes';
-import axios from 'axios';
+import loadProductData from '../../../redux/thunk/products/fetchProducts';
+import { FETCHING_START } from '../../../redux/actionTypes/actionTypes';
 
 
 const Home = () => {
     const dispatch = useDispatch()
+
+    /*
     useEffect(() => {
         dispatch({ type: FETCHING_START })
         // axios.get(`https://moon-tech-redux-server.vercel.app/products`)
@@ -16,6 +18,11 @@ const Home = () => {
                 dispatch({ type: FETCHING_SUCCESS, payload: result.data })
             })
             .catch(() => dispatch({ type: FETCHING_ERROR }))
+    }, [dispatch])
+    */
+    useEffect(() => {
+        dispatch({ type: FETCHING_START })
+        dispatch(loadProductData())
     }, [dispatch])
 
     return (

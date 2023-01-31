@@ -1,4 +1,4 @@
-import { ADD_TO_CART, FETCHING_ERROR, FETCHING_START, FETCHING_SUCCESS, REMOVE_FROM_CART } from "../actionTypes/actionTypes"
+import { ADD_TO_CART, FETCHING_ERROR, FETCHING_START, FETCHING_SUCCESS, LOAD_PRODUCT, REMOVE_FROM_CART } from "../actionTypes/actionTypes"
 
 const initialState = {
     cart: [],
@@ -20,9 +20,13 @@ const productReducer = (state = initialState, action) => {
         case FETCHING_SUCCESS:
             return {
                 ...state,
-                products: action.payload,
                 loading: false,
                 error: false,
+            };
+        case LOAD_PRODUCT:
+            return {
+                ...state,
+                products: action.payload
             };
         case FETCHING_ERROR:
             return {

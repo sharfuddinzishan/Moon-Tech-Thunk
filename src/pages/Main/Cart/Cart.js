@@ -6,7 +6,6 @@ import Product from '../../../components/Product/Product';
 const Cart = () => {
     const state = useSelector(s => s.product)
     const { cart, loading, error } = state
-    console.log(cart);
     if (loading) return <p>Loading...............</p>
     if (error) return <p>Reload Again...............</p>
     if (!loading && !error && !cart?.length) return <p>Nothing Added in Cart!</p>
