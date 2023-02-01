@@ -1,4 +1,4 @@
-import { ADD_TO_CART, FETCHING_ERROR, FETCHING_START, FETCHING_SUCCESS, LOAD_PRODUCT, REMOVE_FROM_CART } from "../actionTypes/actionTypes"
+import { ADD_PRODUCT_TO_DB, ADD_TO_CART, FETCHING_ERROR, FETCHING_START, FETCHING_SUCCESS, LOAD_PRODUCT, REMOVE_FROM_CART } from "../actionTypes/actionTypes"
 
 const initialState = {
     cart: [],
@@ -33,6 +33,12 @@ const productReducer = (state = initialState, action) => {
                 ...state,
                 loading: false,
                 error: true
+            }
+        case ADD_PRODUCT_TO_DB:
+            return {
+                ...state,
+                loading: false,
+                products: [...state.products, action.payload]
             }
         case ADD_TO_CART:
             if (isProductExist) {

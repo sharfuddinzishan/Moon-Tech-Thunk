@@ -8,3 +8,6 @@ export const LOAD_PRODUCT = 'LOAD_PRODUCT'
 //Filtering
 export const BRAND_TOGGLE = 'BRAND_TOGGLE'
 export const STOCK_TOGGLE = 'STOCK_TOGGLE'
+
+//Add Product To DB
+export const ADD_PRODUCT_TO_DB = 'ADD_PRODUCT_TO_DB'
