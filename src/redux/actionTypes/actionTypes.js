@@ -11,3 +11,4 @@ export const STOCK_TOGGLE = 'STOCK_TOGGLE'
 
 //Add Product To DB
 export const ADD_PRODUCT_TO_DB = 'ADD_PRODUCT_TO_DB'
+export const REMOVE_PRODUCT_FROM_DB = 'REMOVE_PRODUCT_FROM_DB'

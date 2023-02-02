@@ -1,4 +1,4 @@
-import { ADD_PRODUCT_TO_DB, ADD_TO_CART, FETCHING_ERROR, FETCHING_START, FETCHING_SUCCESS, LOAD_PRODUCT, REMOVE_FROM_CART } from "../actionTypes/actionTypes"
+import { ADD_PRODUCT_TO_DB, ADD_TO_CART, FETCHING_ERROR, FETCHING_START, FETCHING_SUCCESS, LOAD_PRODUCT, REMOVE_FROM_CART, REMOVE_PRODUCT_FROM_DB } from "../actionTypes/actionTypes"
 
 const initialState = {
     cart: [],
@@ -8,7 +8,7 @@ const initialState = {
 }
 
 const productReducer = (state = initialState, action) => {
-    let isProductExist = state.cart.find(p => p._id === action.payload?._id)
+    let isProductExist = state.cart?.find(p => p._id === action?.payload?._id)
     let newCart = [...state.cart]
     switch (action.type) {
         case FETCHING_START:
@@ -23,28 +23,32 @@ const productReducer = (state = initialState, action) => {
                 loading: false,
                 error: false,
             };
-        case LOAD_PRODUCT:
-            return {
-                ...state,
-                products: action.payload
-            };
         case FETCHING_ERROR:
             return {
                 ...state,
                 loading: false,
                 error: true
             }
+        case LOAD_PRODUCT:
+            return {
+                ...state,
+                products: action.payload,
+            };
+
         case ADD_PRODUCT_TO_DB:
             return {
                 ...state,
-                loading: false,
-                products: [...state.products, action.payload]
+                products: [...state.products, action.payload],
+            }
+        case REMOVE_PRODUCT_FROM_DB:
+            return {
+                ...state,
+                products: state.products.filter(product => product._id !== action.payload),
             }
         case ADD_TO_CART:
             if (isProductExist) {
                 newCart = state.cart.filter(c => c._id !== isProductExist._id)
                 action.payload.quantity = isProductExist.quantity + 1
-
             }
             else {
                 action.payload.quantity = 1

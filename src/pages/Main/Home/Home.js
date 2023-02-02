@@ -3,8 +3,6 @@ import Products from '../../../components/Products/Products';
 import { } from 'redux'
 import { useDispatch } from 'react-redux';
 import loadProductData from '../../../redux/thunk/products/fetchProducts';
-import { FETCHING_START } from '../../../redux/actionTypes/actionTypes';
-
 
 const Home = () => {
     const dispatch = useDispatch()
@@ -21,7 +19,6 @@ const Home = () => {
     }, [dispatch])
     */
     useEffect(() => {
-        dispatch({ type: FETCHING_START })
         dispatch(loadProductData())
     }, [dispatch])
 

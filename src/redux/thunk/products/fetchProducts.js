@@ -1,11 +1,12 @@
 import axios from "axios"
 import { loadProduct } from "../../actionCreators/productAction"
 
-import { FETCHING_ERROR, FETCHING_SUCCESS } from "../../actionTypes/actionTypes"
+import { FETCHING_ERROR, FETCHING_START, FETCHING_SUCCESS } from "../../actionTypes/actionTypes"
 
 const loadProductData = () => {
     return async (dispatch, getState) => {
         try {
+            dispatch({ type: FETCHING_START })
             const result = await axios.get(`http://localhost:5000/products`)
             const data = await result.data
             if (data?.length) {
