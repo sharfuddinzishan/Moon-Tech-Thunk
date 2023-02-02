@@ -26,6 +26,7 @@ const AddProduct = () => {
     const handleForm = e => {
         e.preventDefault()
         dispatch(addProducts(productInfo))
+        e.target.reset()
     }
     const handleInput = e => {
         let { name, value, type } = e.target
@@ -85,7 +86,7 @@ const AddProduct = () => {
                             </Form.Group>
                             <Form.Group as={Col} controlId="motherboard">
                                 <Form.Label>Motherboard</Form.Label>
-                                <Form.Control type="text" name="motherboard" onBlur={handleSpecInput} placeholder="otherboard" required />
+                                <Form.Control type="text" name="motherboard" onBlur={handleSpecInput} placeholder="Motherboard" required />
                             </Form.Group>
                         </Row>
                         <Row>

@@ -6,11 +6,11 @@ const removeProducts = (productID) => {
     return async (dispatch, getState) => {
         try {
             dispatch({ type: FETCHING_START })
-            // const result = await axios.delete(`http://localhost:5000/products/${productID}`).then(r => {
+            // const result = await axios.delete(`https://moon-tech-redux-server.vercel.app/products/${productID}`).then(r => {
             //     dispatch(removeProductFromDb(productID))
             //     dispatch({ type: FETCHING_SUCCESS })
             // })
-            const result = await axios.delete(`http://localhost:5000/products/${productID}`)
+            const result = await axios.delete(`https://moon-tech-redux-server.vercel.app/products/${productID}`)
             if (result.data.acknowleged || result.data.deletedCount) {
                 dispatch(removeProductFromDb(productID))
                 dispatch({ type: FETCHING_SUCCESS })

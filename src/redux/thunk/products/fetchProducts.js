@@ -7,7 +7,7 @@ const loadProductData = () => {
     return async (dispatch, getState) => {
         try {
             dispatch({ type: FETCHING_START })
-            const result = await axios.get(`http://localhost:5000/products`)
+            const result = await axios.get(`https://moon-tech-redux-server.vercel.app/products`)
             const data = await result.data
             if (data?.length) {
                 dispatch(loadProduct(data))

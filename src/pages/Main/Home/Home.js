@@ -11,7 +11,7 @@ const Home = () => {
     useEffect(() => {
         dispatch({ type: FETCHING_START })
         // axios.get(`https://moon-tech-redux-server.vercel.app/products`)
-        axios.get(`http://localhost:5000/products`)
+        axios.get(`https://moon-tech-redux-server.vercel.app/products`)
             .then(result => {
                 dispatch({ type: FETCHING_SUCCESS, payload: result.data })
             })

@@ -6,7 +6,7 @@ const addProducts = (productFormData) => {
     return async (dispatch, getState) => {
         try {
             dispatch({ type: FETCHING_START })
-            const result = await axios.post(`http://localhost:5000/products`, productFormData)
+            const result = await axios.post(`https://moon-tech-redux-server.vercel.app/products`, productFormData)
             if (result?.acknowleged) {
                 dispatch(addProductToDb({ ...productFormData, _id: result.data.insertedId }))
             }
